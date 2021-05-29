@@ -2,7 +2,6 @@ import pygame
 from pygame.locals import *
 import random
 from random import randrange
-import time
 
 class TicTacToeGame:
     def __init__(self):

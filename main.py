@@ -4,7 +4,6 @@ import numpy as np
 import random
 from os import path
 import sys
-import time
 
 def train(games):
 

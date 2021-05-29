@@ -5,6 +5,7 @@ import sys
 import numpy as np
 import time
 
+
 pygame.font.init()
 pygame.init()
 
@@ -156,8 +157,8 @@ def draw_turn(turn):
     else: 
         turn_text = TURN_FONT.render("AI Turn!", 1, ORANGE)
     #Removes the old turn_text before doing the new one
-    pygame.draw.rect(WIN, WHITE, (WIDTH//2 - turn_text.get_width()/2, (HEIGHT- 20) - turn_text.get_height()/2, 125, 50))
-    
+    pygame.draw.rect(WIN, WHITE, (10, (HEIGHT- 20) - turn_text.get_height()/2, 2000, 2000))
+
     WIN.blit(turn_text, (WIDTH//2 - turn_text.get_width()/2, ((HEIGHT- 20) - turn_text.get_height()/2)))
     pygame.display.update()
 
@@ -171,10 +172,6 @@ def get_state(turn):
                 oned_board[i] = 2
             else:
                 oned_board[i] = 0
-        if turn == 'O':
-            for i in range(len(oned_board)):
-                oned_board[i] += 2
-
         return tuple(oned_board)
 
 def main():
@@ -188,7 +185,7 @@ def main():
         clock.tick(FPS)
         #if its the AI's turn
         if turn == 'X':
-                #time.sleep(2)
+                pygame.time.delay(1000)
                 state = get_state(turn) #get the state of the current board
                 index = np.argmax(q_table[state])
                 if update_board(turn, index) == False: # ignore invalid choice
